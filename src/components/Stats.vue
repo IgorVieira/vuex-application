@@ -8,8 +8,6 @@
 
 <script>
 
-import Stats from '@/components/Stats.vue'
-
 import { mapGetters, mapMutations, mapActions, mapState } from 'vuex'
 
 export default {
