@@ -11,7 +11,7 @@
       <ul>
         <li v-for="(task, index) in tasks" v-bind:key="index">
           {{ task }}
-          <button v-on:click="removeLinks(index)" class="rm">Remove</button>
+          <button v-on:click="removeTaskById(index)" class="rm">Remove</button>
         </li>
       </ul>
 
@@ -46,14 +46,14 @@ export default {
       'ADD_TASK'
     ]),
     ...mapActions([
-      'removeLink'
+      'removeTask'
     ]),
     addLink: function () {
       this.ADD_TASK(this.newLink)
       this.newLink = ''
     },
-    removeLinks: function (link) {
-      this.removeLink(link)
+    removeTaskById: function (link) {
+      this.removeTask(link)
     }
   }
 }

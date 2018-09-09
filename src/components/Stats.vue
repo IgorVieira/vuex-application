@@ -1,6 +1,6 @@
 <template>
   <div class="stats">
-    <button v-on:click="removeAllLinks" class="stats-remove-all">Remove all tasks</button>
+    <button v-on:click="removeAllTasks" class="stats-remove-all">Remove all tasks</button>
     <p class="stats-text">There are currently {{ countLinks }} links </p>
     <p>{{ msg }}</p>
   </div>
@@ -28,9 +28,9 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations(['REMOVE_ALL']),
+    ...mapMutations(['REMOVE_ALL_TASKS']),
     ...mapActions(['removeAll']),
-    removeAllLinks () {
+    removeAllTasks () {
       this.removeAll().then(() => {
         this.msg = 'They have been removed'
         setTimeout(() => {
