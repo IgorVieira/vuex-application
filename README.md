@@ -1,5 +1,7 @@
 # vuex-application
 
+[![Build Status](https://travis-ci.org/IgorVieira/vuex-application.svg?branch=master)](https://travis-ci.org/IgorVieira/vuex-application)
+
 ## Project setup
 ```
 yarn install
