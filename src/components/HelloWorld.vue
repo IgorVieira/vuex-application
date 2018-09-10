@@ -2,9 +2,9 @@
   <div class="container">
     <div>
       <h1>{{ title }}</h1>
-
-      <form @submit.prevent="addLink" class="form-task">
-        <input class="link-input" type="text" placeholder="Add another task" v-model="newLink"/>
+      <p>{{ error_msg }}</p>
+      <form @submit.prevent="addTask" class="form-task">
+        <input class="link-input" type="text" placeholder="Add another task" v-model="newTask"/>
         <button class="form-add">Add</button>
       </form>
       <stats/>
@@ -29,7 +29,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      newLink: ''
+      newTask: '',
+      error_msg: ''
     }
   },
   components: {
@@ -48,12 +49,24 @@ export default {
     ...mapActions([
       'removeTask'
     ]),
-    addLink: function () {
-      this.ADD_TASK(this.newLink)
-      this.newLink = ''
+    addTask: function () {
+      this.validationInput(this.newTask)
+      this.newTask = ''
     },
     removeTaskById: function (link) {
       this.removeTask(link)
+    },
+    validationInput: function(task) {
+      task === '' ?
+      this.errorMessage() :
+      this.ADD_TASK(task)
+    },
+    errorMessage: function() {
+      this.error_msg = 'Please, write an task here'
+
+      setTimeout(() => {
+        this.error_msg = ''
+      }, 1500)
     }
   }
 }
